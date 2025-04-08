@@ -9,15 +9,17 @@ import { Behavior } from './behavior/entities/behavior.entity';
 import { BehaviorModule } from './behavior/behavior.module';
 import { AuthModule } from './auth/auth.module';
 import { User } from './auth/entities/user.entity';
+import * as path from 'path';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      envFilePath: path.join(__dirname, '.env'),
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: '127.0.0.1',
+      host: 'mysql-container',
       port: 3306,
       username: 'root',
       password: '1234',
